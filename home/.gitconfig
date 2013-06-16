@@ -1,0 +1,40 @@
+[github]
+  user = duwanis
+[user]
+  email = tommy@wellbredgrapefruit.com
+  name = Tommy Morgan
+[log]
+  decorate = short
+[color]
+  ui = auto
+[pager]
+  status = true
+  show-branch = true
+[rebase]
+  autosquash = true
+[rerere]
+  enabled = true
+[apply]
+  whitespace = fix
+[core]
+  excludesfile = ~/.gitignore
+[help]
+  autocorrect = 10
+[alias]
+  oneline = log --oneline
+  graph = log --oneline --graph
+  last = log -1
+  amend = commit --amend
+  staged = diff --cached
+  both = diff HEAD
+  sha1 = !sh -c 'git rev-parse ${1-`echo HEAD`}' -
+  abbrev = !sh -c 'git rev-parse --short ${1-`echo HEAD`}' -
+
+# amend to a previous commit:
+# git add file
+# git fixup HEAD^^
+# will put the changes to 'file' to the commit two behind HEAD
+  fixup = !sh -c 'git commit --fixup $1 && \
+    git stash && \
+    git rebase -i $1~1 && \
+    git stash pop' -
