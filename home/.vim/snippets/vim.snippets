@@ -1,0 +1,25 @@
+snippet h1 "Create a level-1 heading for vim configs"
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" $1                                                                         {{{
+
+${VISUAL}
+
+" }}}
+endsnippet
+
+snippet h2 "Create a level-2 heading for vim configs"
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" $1                                                                         {{{
+
+${VISUAL}
+
+" }}}
+endsnippet
+
+snippet aug "Create an autocommand group"
+augroup ${1:GroupName}
+  autocmd!
+  ${VISUAL}
+augroup END
+endsnippet
