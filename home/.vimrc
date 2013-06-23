@@ -26,60 +26,109 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 
 " BUNDLE ALL THE THINGS
 " All Bundles are github repositories
-NeoBundle 'tpope/vim-abolish'
+
+" ag.vim - provides an ag search wrapper with a similar API to ack.vim
 NeoBundle 'rking/ag.vim'
+" characterize - provides the `ga` binding with some extra metadata on characters
 NeoBundle 'tpope/vim-characterize'
+" coffee-script - syntax files for the coffeescript language
 NeoBundle 'kchmck/vim-coffee-script'
+" commentary - provides a gcc (and gc<motion>) binding to comment code
 NeoBundle 'tpope/vim-commentary'
+" ctrlp - a fuzzy finder for files, buffers, whatever really
 NeoBundle 'kien/ctrlp.vim', { 'depends': 'sgur/ctrlp-extensions.vim' }
+" ctrlp-rails - rails finders for ctrlp
+NeoBundle 'iurifq/ctrlp-rails.vim'
+" delimitMate - automatically close brackets, parentheses, etc.
 NeoBundle 'Raimondi/delimitMate'
+" dirsettings - allow for directory-specific vim configurations
 NeoBundle 'chazy/dirsettings'
+" dispatch - run stuff in the background and be crazy awesome about it
 NeoBundle 'tpope/vim-dispatch'
+" endwise - automatically insert `end` statements in languages that use them
 NeoBundle 'tpope/vim-endwise'
+" eunuch - provide some nice commands for interacting with the filesystem directly
 NeoBundle 'tpope/vim-eunuch'
-NeoBundle 'terryma/vim-expand-region'
+" extradite - git commit browser, relies on fugitive
 NeoBundle 'int3/vim-extradite'
+" fanfingtastic - make the `f` command much smarter
 NeoBundle 'dahu/vim-fanfingtastic'
+" fugitive - git interop
 NeoBundle 'tpope/vim-fugitive'
+" gist - gist interop
 NeoBundle 'mattn/gist-vim', { 'depends': 'mattn/webapi-vim' }
+" goldenview - window resizing, smart splitting, all based on the golden ratio
 NeoBundle 'zhaocai/GoldenView.Vim'
-NeoBundle 'tpope/vim-haml'
+" hybrid - colorscheme
 NeoBundle 'w0ng/vim-hybrid'
+" indexed-search - show index data for searches (result 4 of 20, etc.)
 NeoBundle 'henrik/vim-indexed-search'
+" less - syntax files for less
 NeoBundle 'groenewege/vim-less'
+" markdown - syntax files for markdown
 NeoBundle 'tpope/vim-markdown'
+" matchtag - highlight the matching *ML tag, like vim does natively for parens
 NeoBundle 'gregsexton/MatchTag'
+" mustache - syntax files for mustache
 NeoBundle 'juvenn/mustache.vim'
+" neocomplecache - autocomplete suggestions
 NeoBundle 'Shougo/neocomplcache.vim', { 'depends': 'JazzCore/neocomplcache-ultisnips' }
+" nerdtree - directory browser/project drawer
 NeoBundle 'scrooloose/nerdtree'
+" nrrwrgn - pulls a "narrow region" of a file out into a new buffer for focused editing
 NeoBundle 'chrisbra/NrrwRgn'
+" octopress - provides functionality for working with an octopress blog
 NeoBundle 'tangledhelix/vim-octopress'
+" powerline - awesome status line
 NeoBundle 'Lokaltog/vim-powerline'
+" quicktask - todolist plugin
+NeoBundle 'aaronbieber/quicktask'
+" rails - functionality for working with a rails application easily
 NeoBundle 'tpope/vim-rails'
+" rainbow_parentheses - highlight parens/brackets/etc. in rainbow colors to make
+" finding matches easier
 NeoBundle 'kien/rainbow_parentheses.vim'
+" rake - rake interaction
 NeoBundle 'tpope/vim-rake'
+" repeat - make certain plugin tasks repeatable with `.`
 NeoBundle 'tpope/vim-repeat'
+" rsi - provide readline mappings for insert and commandline mode
 NeoBundle 'tpope/vim-rsi'
+" ruby-refactoring - provide some handy functions for doing refactors in ruby
 NeoBundle 'ecomba/vim-ruby-refactoring'
+" rvm - interaction with the Ruby Version Manager
 NeoBundle 'tpope/vim-rvm'
-NeoBundle 'vim-scripts/scratch.vim'
-NeoBundle 'mhinz/vim-signify'
-NeoBundle 'terryma/vim-smooth-scroll'
+" surround - work with surrounding characters
 NeoBundle 'tpope/vim-surround'
+" syntastic - syntax checker
 NeoBundle 'scrooloose/syntastic'
+" tagbar - window for viewing tags in current buffer
 NeoBundle 'majutsushi/tagbar'
+" textobj-rubyblock - provide a text object for ruby blocks
 NeoBundle 'nelstrom/vim-textobj-rubyblock'
+" textobj-user - library for creating user-defined text objects
 NeoBundle 'kana/vim-textobj-user'
+" textobjectify - library for easily defining text objects
 NeoBundle 'paradigm/TextObjectify'
+" tomdoc - syntax for tomdoc in ruby/coffee files
 NeoBundle 'duwanis/tomdoc.vim'
+" ultisnips - snippets
 NeoBundle 'SirVer/ultisnips'
+" unimpaired - provide mappings for the bracket keys
 NeoBundle 'tpope/vim-unimpaired'
+" vimproc - library for running processes in the background
 NeoBundle 'Shougo/vimproc.vim'
+" vimshell - the shell, but in vim
 NeoBundle 'Shougo/vimshell'
+" vimroom - WriteRoom-style vim editing
 NeoBundle 'mikewest/vimroom'
-NeoBundle 'skalnik/vim-vroom'
+" vimwiki - wiki in vim
 NeoBundle 'vim-scripts/vimwiki'
+" vroom - test runners for ruby
+NeoBundle 'skalnik/vim-vroom'
+" yankring - emacs' killring, but in vim
 NeoBundle 'vim-scripts/YankRing.vim'
+" zoomwin - focus on one window temporarily
 NeoBundle 'regedarek/ZoomWin'
 
 " }}}
@@ -124,7 +173,6 @@ set smartindent
 set softtabstop=2
 set splitbelow
 set t_Co=256
-set t_ti= t_te=
 if exists('$TMUX')
   let &t_SI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=1\x7\<Esc>\\"
   let &t_EI = "\<Esc>Ptmux;\<Esc>\<Esc>]50;CursorShape=0\x7\<Esc>\\"
@@ -175,6 +223,15 @@ nnoremap [ctrlp]b :CtrlPBuffer<CR>
 nnoremap [ctrlp]c :CtrlPCmdline<CR>
 " f - file mode
 let g:ctrlp_map = '[ctrlp]f'
+" l - todo lists
+nnoremap [ctrlp]l :CtrlP ~/.vim/tasks/lists/<CR>
+" r - rails
+" rc - rails controller
+nnoremap [ctrlp]rc :CtrlPControllers<CR>
+" rm - rails model
+nnoremap [ctrlp]rm :CtrlPModels<CR>
+" rv - rails view
+nnoremap [ctrlp]rv :CtrlPViews<CR>
 " t - tag mode
 nnoremap [ctrlp]t :CtrlPTag<CR>
 " w - search wiki
@@ -290,8 +347,8 @@ noremap <C-l> <C-W>l
 
 " make H/J/K/L act like super versions of h/j/k/l
 noremap H ^
-noremap <silent> J :call smooth_scroll#down(&scroll*2, 0, 4)<CR>
-noremap <silent> K :call smooth_scroll#up(&scroll*2, 0, 4)<CR>
+noremap J <C-f>
+noremap K <C-b>
 noremap L $
 
 " J and K were actually useful though, so use <Leader>j/k to replace them
@@ -305,14 +362,6 @@ noremap <Leader>k K
 
 " ;d toggles the nerdtree window
 noremap <Leader>d :NERDTreeToggle<CR>
-
-" }}}
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Scratch.vim                                                                {{{
-
-" ;S opens the scratch buffer
-noremap <Leader>S :Sscratch<CR>
 
 " }}}
 
@@ -372,11 +421,20 @@ nnoremap [vimwiki] <nop>
 " a - search through the wiki
 nnoremap [vimwiki]a :VimWikiSearch<Space>""<Left>
 " d - open today's diary in a split
-nmap <silent> [vimwiki]d <Leader>s:VimwikiMakeDiaryNote<CR>
+nmap <silent> [vimwiki]d <Plug>VimwikiMakeDiaryNote
 " D - open the diary index
-nmap <silent> [vimwiki]D <Leader>s:VimwikiDiaryIndex<CR>
+nmap <silent> [vimwiki]D <Plug>VimwikiDiaryIndex
+" <Leader>i - generate diary links
+nmap <silent> [vimwiki]<Leader>i <Plug>VimwikiDiaryGenerateLinks
+" s - open the wiki UI select
+nmap <silent> [vimwiki]s <Plug>VimwikiUISelect
+" t - open the wiki index in a tab
+nmap <silent> [vimwiki]t <Plug>VimwikiTabIndex
+" <Leader>t - make diary note in a tab
+nmap <silent> [vimwiki]<Leader>t <Plug>VimwikiTabMakeDiaryNote
 " w - open the wiki index
-nmap <silent> [vimwiki]w <Leader>s:VimwikiIndex
+nmap <silent> [vimwiki]w <Plug>VimwikiIndex
+
 
 " }}}
 
@@ -626,6 +684,15 @@ augroup END
 " }}}
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Quicktasks                                                                 {{{
+
+augroup Quicktask
+  autocmd BufNewFile,BufRead *.quicktask setf quicktask
+augroup END
+
+" }}}
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " .vimrc filetype concerns                                                   {{{
 " Just a few sundries for editing .vimrc... autofold on the markers, make sure
 " Ultisnips knows it's a viml file, etc.
@@ -660,14 +727,14 @@ let ctrlp_filter_greps = "".
   \ "deploy/|classes/|libs/|vendor/|deploy/vendor/|.git/|.hg/|.svn/|.*migrations/" .
   \ ")'"
 let g:ctrlp_working_path_mode = 0
-let g:ctrlp_use_caching = 0
+let g:ctrlp_use_caching = 1
 
 let g:ctrlp_extensions = ['tag', 'cmdline', 'yankring']
 
 " }}}
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" delimiteMate                                                               {{{
+" delimitMate                                                                {{{
 
 let delimitMate_expand_cr = 1
 let delimitMate_expand_space = 1
@@ -741,6 +808,14 @@ let NERDTreeShowLineNumbers=0
 
 " FANCINESS
 let g:Powerline_symbols = "fancy"
+
+" }}}
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Quicktasks                                                                 {{{
+
+let g:quicktask_autosave = 1 " autosave quicktask files
+let g:quicktask_snip_path = "~/.vim/tasks/snips/"
 
 " }}}
 
