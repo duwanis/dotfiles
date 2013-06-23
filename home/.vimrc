@@ -63,6 +63,8 @@ NeoBundle 'zhaocai/GoldenView.Vim'
 NeoBundle 'w0ng/vim-hybrid'
 " indexed-search - show index data for searches (result 4 of 20, etc.)
 NeoBundle 'henrik/vim-indexed-search'
+" itchy - scratch buffers
+NeoBundle 'programble/itchy.vim'
 " less - syntax files for less
 NeoBundle 'groenewege/vim-less'
 " markdown - syntax files for markdown
@@ -331,6 +333,13 @@ cnoremap kj <Esc>
 " GoldenView                                                                 {{{
 
 nmap <silent> <Leader>s <Plug>GoldenViewSplit
+
+" }}}
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Itchy                                                                      {{{
+
+nnoremap <silent> <Leader>S :Scratch<CR>
 
 " }}}
 
@@ -765,6 +774,13 @@ let g:gist_post_private    = 1
 
 " don't use their default keys
 let g:goldenview__enable_default_mapping = 0
+
+" }}}
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Itchy                                                                      {{{
+
+let g:itchy_always_split=1
 
 " }}}
 
