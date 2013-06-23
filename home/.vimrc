@@ -73,8 +73,6 @@ NeoBundle 'tpope/vim-markdown'
 NeoBundle 'gregsexton/MatchTag'
 " mustache - syntax files for mustache
 NeoBundle 'juvenn/mustache.vim'
-" neocomplecache - autocomplete suggestions
-NeoBundle 'Shougo/neocomplcache.vim', { 'depends': 'JazzCore/neocomplcache-ultisnips' }
 " nerdtree - directory browser/project drawer
 NeoBundle 'scrooloose/nerdtree'
 " nrrwrgn - pulls a "narrow region" of a file out into a new buffer for focused editing
@@ -100,6 +98,8 @@ NeoBundle 'tpope/vim-rsi'
 NeoBundle 'ecomba/vim-ruby-refactoring'
 " rvm - interaction with the Ruby Version Manager
 NeoBundle 'tpope/vim-rvm'
+" supertab - insert completion
+NeoBundle 'ervandew/supertab'
 " surround - work with surrounding characters
 NeoBundle 'tpope/vim-surround'
 " syntastic - syntax checker
